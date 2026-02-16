@@ -4,7 +4,7 @@ export function useSeo({
   title,
   description,
   image = "/social-preview.svg",
-  shareTitle = "Tartib Laundry"
+  shareTitle = "مغاسل ترتيب | Tartib Laundry"
 }) {
   useEffect(() => {
     document.title = title;

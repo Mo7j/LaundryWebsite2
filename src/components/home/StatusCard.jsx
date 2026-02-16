@@ -45,8 +45,11 @@ export default function StatusCard({ receipts }) {
       <h2>{t.checkStatusTitle}</h2>
       <form onSubmit={handleCheck}>
         <input
+          inputMode="numeric"
+          pattern="[0-9]*"
+          autoComplete="off"
           value={queryId}
-          onChange={(event) => setQueryId(event.target.value.toUpperCase())}
+          onChange={(event) => setQueryId(event.target.value.replace(/[^0-9]/g, ""))}
           placeholder={t.checkStatusHint}
           required
         />

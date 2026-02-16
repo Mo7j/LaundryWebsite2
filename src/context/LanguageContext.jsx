@@ -4,7 +4,7 @@ import { translations } from "../data/siteConfig";
 const LanguageContext = createContext(null);
 
 export function LanguageProvider({ children }) {
-  const [language, setLanguage] = useState("en");
+  const [language, setLanguage] = useState("ar");
 
   const value = useMemo(() => {
     const t = translations[language] ?? translations.en;

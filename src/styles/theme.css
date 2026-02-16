@@ -354,6 +354,7 @@ select {
   border: 1px solid #f0e3b7;
   background: #fff;
   color: var(--text);
+  font-size: 16px;
   padding: 11px 12px;
   border-radius: 10px;
   margin-top: 6px;
