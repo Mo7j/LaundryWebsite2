@@ -15,7 +15,7 @@ function LanguageToggle() {
   );
 }
 
-export default function SiteLayout({ children }) {
+export default function SiteLayout({ children, hideFooter = false, showLogout = false, onLogout }) {
   const { t, dir, language } = useLanguage();
   const location = useLocation();
   const isHome = location.pathname === "/";
@@ -38,38 +38,47 @@ export default function SiteLayout({ children }) {
             <a href="#contact">{t.navContact}</a>
           </nav>
         )}
-        <LanguageToggle />
+        <div className="top-controls">
+          {showLogout ? (
+            <button className="top-logout" type="button" onClick={onLogout}>
+              {t.logout}
+            </button>
+          ) : null}
+          <LanguageToggle />
+        </div>
       </header>
       <main>{children}</main>
-      <footer className="footer" id="contact">
-        <div className="footer-main">
-          <div className="footer-col">
-            <h4>{language === "ar" ? "مواقعنا" : "Our Locations"}</h4>
-            <div className="footer-location-list">
-              {siteConfig.locations.map((branch) => (
-                <a key={branch.key} href={branch.mapLink} target="_blank" rel="noreferrer">
-                  {language === "ar"
-                    ? `${branch.nameAr} - ${branch.cityAr}`
-                    : `${branch.nameEn} - ${branch.cityEn}`}
-                </a>
-              ))}
+      {!hideFooter ? (
+        <footer className="footer" id="contact">
+          <div className="footer-main">
+            <div className="footer-col">
+              <h4>{language === "ar" ? "مواقعنا" : "Our Locations"}</h4>
+              <div className="footer-location-list">
+                {siteConfig.locations.map((branch) => (
+                  <a key={branch.key} href={branch.mapLink} target="_blank" rel="noreferrer">
+                    {language === "ar"
+                      ? `${branch.nameAr} - ${branch.cityAr}`
+                      : `${branch.nameEn} - ${branch.cityEn}`}
+                  </a>
+                ))}
+              </div>
+            </div>
+            <div className="footer-col">
+              <h4>{language === "ar" ? "اتصل بنا" : "Contact Us"}</h4>
+              <a href={`tel:${siteConfig.contact.phone}`}>{siteConfig.contact.phone}</a>
+            </div>
+            <div className="footer-col">
+              <h4>{language === "ar" ? "ساعات العمل" : "Working Hours"}</h4>
+              <p>5AM - 12AM</p>
             </div>
           </div>
-          <div className="footer-col">
-            <h4>{language === "ar" ? "اتصل بنا" : "Contact Us"}</h4>
-            <a href={`tel:${siteConfig.contact.phone}`}>{siteConfig.contact.phone}</a>
+          <div className="footer-bottom">
+            <a href={poweredByWhatsapp} target="_blank" rel="noreferrer">
+              Powered by 7j
+            </a>
           </div>
-          <div className="footer-col">
-            <h4>{language === "ar" ? "ساعات العمل" : "Working Hours"}</h4>
-            <p>5AM - 12AM</p>
-          </div>
-        </div>
-        <div className="footer-bottom">
-          <a href={poweredByWhatsapp} target="_blank" rel="noreferrer">
-            Powered by 7j
-          </a>
-        </div>
-      </footer>
+        </footer>
+      ) : null}
     </div>
   );
 }

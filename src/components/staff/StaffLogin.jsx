@@ -8,7 +8,7 @@ export default function StaffLogin({ onLogin, error }) {
 
   const submit = (event) => {
     event.preventDefault();
-    onLogin({ username, password });
+    void onLogin({ username, password });
   };
 
   return (

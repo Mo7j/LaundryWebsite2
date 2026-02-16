@@ -1,6 +1,11 @@
 import { useEffect } from "react";
 
-export function useSeo({ title, description, image = "/social-preview.svg" }) {
+export function useSeo({
+  title,
+  description,
+  image = "/social-preview.svg",
+  shareTitle = "Tartib Laundry"
+}) {
   useEffect(() => {
     document.title = title;
 
@@ -12,11 +17,11 @@ export function useSeo({ title, description, image = "/social-preview.svg" }) {
     };
 
     setMeta('meta[name="description"]', description);
-    setMeta('meta[property="og:title"]', title);
+    setMeta('meta[property="og:title"]', shareTitle);
     setMeta('meta[property="og:description"]', description);
     setMeta('meta[property="og:image"]', image);
-    setMeta('meta[name="twitter:title"]', title);
+    setMeta('meta[name="twitter:title"]', shareTitle);
     setMeta('meta[name="twitter:description"]', description);
     setMeta('meta[name="twitter:image"]', image);
-  }, [description, image, title]);
+  }, [description, image, shareTitle, title]);
 }

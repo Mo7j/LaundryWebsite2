@@ -91,6 +91,22 @@ a {
   font-weight: 500;
 }
 
+.top-controls {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.top-logout {
+  border: 1px solid var(--outline);
+  border-radius: 999px;
+  background: #fff;
+  color: var(--text);
+  padding: 8px 12px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
 .lang-toggle {
   border: 0;
   border-radius: 999px;
@@ -188,6 +204,11 @@ a {
   border: 1px solid #f6dfa6;
   background: #fff;
   color: #5a4700;
+}
+
+.btn-danger {
+  background: #d93f3f;
+  color: #fff;
 }
 
 .full-width {
@@ -350,6 +371,10 @@ label {
 .create-receipt {
   display: grid;
   gap: 12px;
+}
+
+.create-receipt h2 {
+  margin-bottom: 0;
 }
 
 .calc-grid {
@@ -656,6 +681,56 @@ label {
   min-width: 140px;
 }
 
+.status-filter-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.status-chip {
+  padding: 7px 12px;
+  font-size: 0.82rem;
+}
+
+.status-chip.is-active {
+  background: var(--primary);
+  border-color: var(--primary-strong);
+  color: #fff;
+}
+
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  padding: 6px 10px;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.status-we_got_it {
+  background: #f4f0df;
+  color: #6f5a18;
+}
+
+.status-working_on_it {
+  background: #eef6ff;
+  color: #2b5a85;
+}
+
+.status-ready,
+.status-delivered {
+  background: #eaf8ea;
+  color: #26713f;
+}
+
+.status-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
 .error-text {
   color: #c04880;
 }
@@ -859,6 +934,15 @@ label {
 
   .order-actions {
     min-width: 100%;
+  }
+
+  .status-actions {
+    width: 100%;
+  }
+
+  .status-actions .status-chip {
+    flex: 1 1 calc(50% - 6px);
+    justify-content: center;
   }
 }
 
