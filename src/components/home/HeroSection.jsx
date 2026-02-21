@@ -7,6 +7,7 @@ export default function HeroSection() {
   const { t } = useLanguage();
   const whatsappMessage = encodeURIComponent(t.deliveryWhatsappMsg);
   const cleanPhone = siteConfig.whatsappNumber.replace(/\D/g, "");
+  const whatsappPhone = cleanPhone.startsWith("0") ? `966${cleanPhone.slice(1)}` : cleanPhone;
 
   return (
     <section className="hero section-glow" id="about">
@@ -19,7 +20,7 @@ export default function HeroSection() {
               {t.ctaCall}
             </a>
             <a
-              href={`https://wa.me/${cleanPhone}?text=${whatsappMessage}`}
+              href={`https://wa.me/${whatsappPhone}?text=${whatsappMessage}`}
               target="_blank"
               rel="noreferrer"
               className="btn btn-outline"
